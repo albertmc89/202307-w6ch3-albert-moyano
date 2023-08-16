@@ -24,3 +24,4 @@ const toDosSlice = createSlice({
 });
 
 export const toDosReducer = toDosSlice.reducer;
+export const { loadToDos: loadToDosActionCreator } = toDosSlice.actions;
