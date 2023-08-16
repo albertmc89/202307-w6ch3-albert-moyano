@@ -1,4 +1,6 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { store } from "../../store";
 import App from "./App";
 
 describe("Given an App component", () => {
@@ -6,7 +8,11 @@ describe("Given an App component", () => {
     test("Then it should show 'List of ToDos' inside a heading", () => {
       const title = "List of ToDos";
 
-      render(<App />);
+      render(
+        <Provider store={store}>
+          <App />
+        </Provider>,
+      );
 
       const headingTitle = screen.getByRole("heading", { name: title });
 
