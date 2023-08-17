@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
 import { toDosMock } from "../../mocks/mockData";
+import { store } from "../../store";
 import ToDoCard from "./ToDoCard";
 
 describe("Given a ToDoCard component", () => {
@@ -7,7 +9,11 @@ describe("Given a ToDoCard component", () => {
     test("Then it should show 'sport' as heading", () => {
       const expectedHeadingText = "sport";
 
-      render(<ToDoCard toDo={toDosMock[0]} />);
+      render(
+        <Provider store={store}>
+          <ToDoCard toDo={toDosMock[0]} />
+        </Provider>,
+      );
 
       const textHeading = screen.getByRole("heading", {
         name: expectedHeadingText,
