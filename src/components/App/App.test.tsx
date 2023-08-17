@@ -5,7 +5,7 @@ import App from "./App";
 
 describe("Given an App component", () => {
   describe("When it's rendered", () => {
-    test("Then it should show 'List of ToDos' inside a heading", () => {
+    test("Then it should show 'List of ToDos' inside a level 1 heading", () => {
       const title = "List of ToDos";
 
       render(
