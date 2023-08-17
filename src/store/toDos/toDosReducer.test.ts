@@ -1,5 +1,4 @@
 import { toDosMock } from "../../mocks/mockData";
-import { ToDo } from "../../types";
 import {
   deleteToDoActionCreator,
   loadToDosActionCreator,
@@ -13,7 +12,7 @@ describe("Given a toDosReducer reducer", () => {
       const currentToDosState: ToDoState = {
         toDos: [],
       };
-      const toDos: ToDo[] = toDosMock;
+      const toDos = toDosMock;
 
       const loadToDosAction = loadToDosActionCreator(toDos);
 
@@ -23,8 +22,8 @@ describe("Given a toDosReducer reducer", () => {
     });
   });
 
-  describe("When it receives a state with two ToDos and delete ToDo action with the id 2", () => {
-    test("Then it should return a new state without the ToDo with id 2", () => {
+  describe("When it receives a state with two toDos and delete toDo action with the id 2", () => {
+    test("Then it should return a new state without the toDo with id 2", () => {
       const currentToDosState: ToDoState = {
         toDos: [],
       };
