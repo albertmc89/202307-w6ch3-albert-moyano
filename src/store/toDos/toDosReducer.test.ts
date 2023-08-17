@@ -1,25 +1,19 @@
+import { toDosMock } from "../../mocks/mockData";
 import { ToDo } from "../../types";
-import { deleteToDo, loadToDosActionCreator, toDosReducer } from "./toDosSlice";
+import {
+  deleteToDoActionCreator,
+  loadToDosActionCreator,
+  toDosReducer,
+} from "./toDosSlice";
 import { ToDoState } from "./types";
 
 describe("Given a toDosReducer reducer", () => {
-  describe("When it receives a load toDos action with two ToDos", () => {
-    test("Then it should return a new state with the received two ToDos", () => {
+  describe("When it receives a load toDos action with two toDos", () => {
+    test("Then it should return a new state with the received two toDos", () => {
       const currentToDosState: ToDoState = {
         toDos: [],
       };
-      const toDos: ToDo[] = [
-        {
-          id: 1,
-          name: "prueba",
-          isDone: true,
-        },
-        {
-          id: 2,
-          name: "prueba2",
-          isDone: false,
-        },
-      ];
+      const toDos: ToDo[] = toDosMock;
 
       const loadToDosAction = loadToDosActionCreator(toDos);
 
@@ -35,12 +29,15 @@ describe("Given a toDosReducer reducer", () => {
         toDos: [],
       };
 
+      const toDoToDelete = currentToDosState.toDos.find(
+        ({ id }) => id !== toDoToDeleteId,
+      );
       const toDoToDeleteId = 2;
-      const deleteToDoAction = deleteToDo(toDoToDeleteId);
+      const deleteToDoAction = deleteToDoActionCreator(toDoToDeleteId);
 
       const newToDoState = toDosReducer(currentToDosState, deleteToDoAction);
 
-      expect(newToDoState).not.toContain;
+      expect(newToDoState.toDos).not.toContain(toDoToDelete);
     });
   });
 });

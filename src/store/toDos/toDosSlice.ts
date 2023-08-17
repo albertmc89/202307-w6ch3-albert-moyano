@@ -24,9 +24,14 @@ const toDosSlice = createSlice({
         (toDo) => toDo.id !== action.payload,
       ),
     }),
+    addToDo: (currentAddToDoState, action: PayloadAction<ToDo>): ToDoState => ({
+      toDos: [...currentAddToDoState.toDos, action.payload],
+    }),
   },
 });
 
 export const toDosReducer = toDosSlice.reducer;
-export const { loadToDos: loadToDosActionCreator, deleteToDo: deleteToDo } =
-  toDosSlice.actions;
+export const {
+  loadToDos: loadToDosActionCreator,
+  deleteToDo: deleteToDoActionCreator,
+} = toDosSlice.actions;
