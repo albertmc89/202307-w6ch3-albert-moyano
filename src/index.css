@@ -7,3 +7,8 @@
 html {
   font-family: sans-serif;
 }
+
+ul,
+li {
+  list-style: none;
+}

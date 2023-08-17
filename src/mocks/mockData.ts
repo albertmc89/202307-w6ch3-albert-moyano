@@ -3,12 +3,12 @@ import { ToDo } from "../types";
 export const toDosMock: ToDo[] = [
   {
     id: 1,
-    name: "prueba",
+    name: "sport",
     isDone: true,
   },
   {
     id: 2,
-    name: "prueba2",
+    name: "study",
     isDone: false,
   },
 ];

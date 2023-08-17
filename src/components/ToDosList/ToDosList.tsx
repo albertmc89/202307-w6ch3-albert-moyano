@@ -1,5 +1,6 @@
 import { useAppSelector } from "../../store";
 import ToDoCard from "../ToDo/ToDoCard";
+import "./ToDosList.css";
 
 const ToDosList = (): React.ReactElement => {
   const toDos = useAppSelector((state) => state.toDosState.toDos);
