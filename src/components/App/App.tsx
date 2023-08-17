@@ -1,8 +1,21 @@
+import { useEffect } from "react";
+import { toDosData } from "../../data";
+import { useAppDispatch } from "../../store";
+import { loadToDosActionCreator } from "../../store/toDos/toDosSlice";
+import ToDosList from "../ToDosList/ToDosList";
+
 const App = (): React.ReactElement => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadToDosActionCreator(toDosData));
+  });
+
   return (
     <>
-      <h1>List of ToDos</h1>
-      <ul className="todos"></ul>
+      <div className="container">
+        <ToDosList />
+      </div>
     </>
   );
 };
