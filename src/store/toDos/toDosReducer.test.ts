@@ -4,6 +4,7 @@ import {
   deleteToDoActionCreator,
   loadToDosActionCreator,
   toDosReducer,
+  toggleToDoActionCreator,
 } from "./toDosSlice";
 import { ToDoState } from "./types";
 
@@ -58,6 +59,25 @@ describe("Given a toDosReducer reducer", () => {
       const newBugState = toDosReducer(currentToDosState, addtoDoAction);
 
       expect(newBugState.toDos).toContain(toDoToAdd);
+    });
+  });
+
+  describe("When it receives a state with 2 toDo and a toggleToDo action with id 1", () => {
+    test("Then it should return a new state with 2 toDo and the property 'isDone' of the toDo with id '1' changed", () => {
+      const currentToDosState: ToDoState = {
+        toDos: toDosMock,
+      };
+
+      const idToToggle = 1;
+
+      const toggleIsDoneAction = toggleToDoActionCreator(idToToggle);
+      const newToDosState = toDosReducer(currentToDosState, toggleIsDoneAction);
+
+      const toggledBug = newToDosState.toDos.find(
+        (toDos) => toDos.id === idToToggle,
+      );
+
+      expect(toggledBug).toHaveProperty("isDone", false);
     });
   });
 });

@@ -48,4 +48,5 @@ export const {
   loadToDos: loadToDosActionCreator,
   deleteToDo: deleteToDoActionCreator,
   addToDo: addToDoActionCreator,
+  toggleToDo: toggleToDoActionCreator,
 } = toDosSlice.actions;
